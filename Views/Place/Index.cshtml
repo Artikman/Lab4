@@ -1,0 +1,51 @@
+﻿@using Lab_4.ViewModels
+@model PlacesViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <div class="data-search">
+        @using (Html.BeginForm("Index", "Place", FormMethod.Post))
+        {
+            <fieldset>
+                Сеанс: @Html.TextBox("Session", Model.PlaceViewModel.Session)
+                Номер места: @Html.TextBox("PlaceNumber", Model.PlaceViewModel.PlaceNumber)
+                <input type="submit" value="Найти" />
+            </fieldset>
+        }
+    </div>
+    <div>
+        Свободные места
+        <table>
+            <tr>
+                <th>
+                    <a asp-controller="Place" asp-action="Index" asp-route-sortOrder="@ViewBag.SessionSort">
+                        Сеанс
+                    </a>
+                </th>
+                <th>
+                    <a asp-controller="Place" asp-action="Index" asp-route-sortOrder="@ViewBag.PlaceNumberSort">
+                        Номер места
+                    </a>
+                </th>
+            </tr>
+            @foreach (Place p in Model.PageViewModel)
+            {
+                <tr>
+                    <td>@p.Session</td>
+                    <td>@p.PlaceNumber</td>
+                </tr>
+            }
+        </table>
+        <div>
+            <a asp-controller="Place" asp-action="Index" asp-route-index="-1">
+                <<
+            </a>
+            @(Model.PageNumber + 1)
+            <a asp-controller="Place" asp-action="Index" asp-route-index="1">
+                >>
+            </a>
+        </div>
+    </div>
+</div>

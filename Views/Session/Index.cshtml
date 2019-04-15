@@ -1,0 +1,48 @@
+﻿@using Lab_4.ViewModels
+@model SessionsViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <div class="data-search">
+        @using (Html.BeginForm("Index", "Session", FormMethod.Post))
+        {
+        <fieldset>
+            Дата: @Html.TextBox("Date", Model.SessionViewModel.Date)
+            Время начала: @Html.TextBox("TimeStarted", Model.SessionViewModel.TimeStarted)
+            Время окончания: @Html.TextBox("EndTime", Model.SessionViewModel.EndTime)
+            Цена билета: @Html.TextBox("TicketPrice", Model.SessionViewModel.TicketPrice)
+            <input type="submit" value="Найти" />
+        </fieldset>
+        }
+    </div>
+    <div>
+        Услуги
+        <table>
+            <tr>
+                <td>Дата</td>
+                <td>
+                    <a asp-controller="Session" asp-action="Index" asp-route-sortOrder="@ViewBag.TimeStartedSort">
+                        Время начала
+                    </a>
+                </td>
+                <td>
+                    <a asp-controller="Session" asp-action="Index" asp-route-sortOrder="@ViewBag.EndTimeSort">
+                        Время окончания
+                    </a>
+                </td>
+                <td>Цена билета</td>
+            </tr>
+            @foreach (Session p in Model.PageViewModel)
+            {
+            <tr>
+                <td>@p.Date</td>
+                <td>@p.TimeStarted</td>
+                <td>@p.EndTime</td>
+                <td>@p.TicketPrice</td>
+            </tr>
+            }
+        </table>
+    </div>
+</div>

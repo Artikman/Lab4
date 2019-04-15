@@ -1,0 +1,43 @@
+﻿@using Lab_4.ViewModels
+@model GenresViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <div class="data-search">
+        @using (Html.BeginForm("Index", "Genre", FormMethod.Post))
+        {
+            <fieldset>
+                 Наименование: @Html.TextBox("Name", Model.GenreViewModel.Name)
+                 Описание: @Html.TextBox("Description", Model.GenreViewModel.Description)
+                <input type="submit" value="Найти" />
+            </fieldset>
+        }
+    </div>
+    <div>
+        Жанры
+        <table>
+            <tr>
+                <td>
+                    <a asp-controller="Genre" asp-action="Index" asp-route-sortOrder="@ViewBag.NameSort">
+                        Имя
+                    </a>
+                </td>
+                <td>
+                    <a asp-controller="Genre" asp-action="Index" asp-route-sortOrder="@ViewBag.DescriptionSort">
+                        Имя
+                    </a>
+                </td>
+            </tr>
+            @foreach (Genre p in Model.PageViewModel)
+            {
+                <tr>
+
+                    <td>@p.Name</td>
+                    <td>@p.Description</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

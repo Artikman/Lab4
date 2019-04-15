@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+}
+
+<div>
+    <form method="post" action="place">
+        <div>
+            <label>Форма для заполнения</label>
+        </div>
+        <div>
+            <label>
+                Сеанс
+                <input type="text" name="session" value="@ViewBag.Session" />
+            </label>
+        </div>
+        <div>
+            <label>
+                Номер места
+                <input type="text" name="placeNumber" value="@ViewBag.PlaceNumber" />
+            </label>
+        </div>
+        <div>
+            <label>
+                Занятость
+                <input type="text" name="employment" value="@ViewBag." />
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="submit" value="Отправить" />
+            </label>
+        </div>
+    </form>
+</div>
+

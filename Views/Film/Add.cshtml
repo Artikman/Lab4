@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+}
+
+<div>
+    <form method="post" action="film">
+        <div>
+            <label>Форма для заполнения</label>
+        </div>
+        <div>
+            <label>
+                Жанр
+                <input type="text" name="genre" />
+            </label>
+        </div>
+        <div>
+            <label>
+                Фильм
+                <select id="Select1" name="film">
+                    <option>Фильм1</option>
+                    <option>Фильм2</option>
+                    <option>Фильм3</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label>
+                Сеанс
+                <input type="text" name="session" />
+            </label>
+        </div>
+        <div>
+            <label>
+                Свободные места
+                <input type="text" name="place" />
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="submit" value="Отправить" />
+            </label>
+        </div>
+    </form>
+</div>

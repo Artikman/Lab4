@@ -1,0 +1,73 @@
+﻿@model Lab_4.ViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "About";
+}
+
+<div class="row">
+    <div class="col-md-2">
+        <label>Жанры</label>
+        <table>
+            @{
+                foreach (Genre i in Model.Genres)
+                {
+                <tr>
+                    <td>@i.Name</td>
+                    <td>@i.Description</td>
+                </tr>
+                }
+            }
+        </table>
+    </div>
+    <div class="col-md-12">
+        <label>Фильмы</label>
+        <table>
+            @{
+                foreach (Film i in Model.Films)
+                {
+            <tr>
+                <td>@i.Name</td>
+                <td>@i.Genre</td>
+                <td>@i.Duration</td>
+                <td>@i.FilmCompany</td>
+                <td>@i.ProducingCountry</td>
+                <td>@i.AgeRestrictions</td>
+                <td>@i.Description</td>
+                <td>@i.ListOfMainActros</td>
+            </tr>
+                }
+            }
+        </table>
+    </div>
+    <div class="col-md-12">
+        <label>Сеансы</label>
+        <table>
+            @{
+                foreach (Session i in Model.Sessions)
+                {
+            <tr>
+                <td>@i.Date</td>
+                <td>@i.TimeStarted</td>
+                <td>@i.EndTime</td>
+                <td>@i.TicketPrice</td>
+                <td>@i.EmployessInvolvedInTheSession</td>
+            </tr>
+                }
+            }
+        </table>
+    </div>
+    <div class="col-md-12">
+        <label>Места</label>
+        <table>
+            @{
+                foreach (Place i in Model.Places)
+                {
+            <tr>
+                <td>@i.Session</td>
+                <td>@i.PlaceNumber</td>
+                <td>@i.Employment</td>
+            </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

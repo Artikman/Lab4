@@ -1,0 +1,41 @@
+﻿@using Lab_4.ViewModels
+@model FilmsViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <div class="data-search">
+        @using (Html.BeginForm("Index", "Film", FormMethod.Post))
+        {
+            <fieldset>
+                Наименование: @Html.TextBox("Name", Model.FilmViewModel.Name)
+                Жанр: @Html.TextBox("Genre", Model.FilmViewModel.Genre)
+                Компания: @Html.TextBox("FilmCompany", Model.FilmViewModel.FilmCompany)
+                <input type="submit" value="Найти" />
+            </fieldset>
+        }
+    </div>
+    <div>
+        Фильмы
+        <table>
+            <tr>
+                <td>Наименование</td>
+                <td>Жанр</td>
+                <td>Компания</td>
+                <td>Продолжительность</td>
+            </tr>
+            @{
+                foreach (Film i in Model.PageViewModel)
+                {
+                    <tr>
+                        <td>@i.Name</td>
+                        <td>@i.Genre</td>
+                        <td>@i.FilmCompany</td>
+                        <td>@i.Duration</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>
