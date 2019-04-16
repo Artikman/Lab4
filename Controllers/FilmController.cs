@@ -31,6 +31,7 @@ namespace Lab_4.Controllers
         }
 
         [HttpGet]
+        [LoggingFilter]
         public IActionResult Index(SortState sortOrder)
         {
             FilmView sessionFilm = (FilmView)HttpContext.Session.GetObject("Film");
@@ -69,6 +70,7 @@ namespace Lab_4.Controllers
         }
 
         [HttpPost]
+        [LoggingFilter]
         public IActionResult Index(FilmView film)
         {
             var sessionSortState = HttpContext.Session.GetString("SortStateFilm");
@@ -97,6 +99,7 @@ namespace Lab_4.Controllers
             return View(filmsView);
         }
 
+        [SaveStateFilter("sort")]
         private IQueryable<Film> Sort(IQueryable<Film> films,
             SortState sortOrder, string name, string genre, string filmcompany, int page)
         {
