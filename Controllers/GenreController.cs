@@ -25,6 +25,7 @@ namespace Lab_4.Controllers
         }
 
         [HttpGet]
+        [LoggingFilter]
         public IActionResult Index(SortState sortOrder)
         {
             Genre sessionGenre = (Genre)HttpContext.Session.GetObject("Genre");
@@ -62,6 +63,7 @@ namespace Lab_4.Controllers
         }
 
         [HttpPost]
+        [LoggingFilter]
         public IActionResult Index(Genre genre)
         {
             var sessionSortState = HttpContext.Session.GetString("SortStateGenre");
@@ -90,6 +92,7 @@ namespace Lab_4.Controllers
             return View(genresView);
         }
 
+        [SaveStateFilter("sort")]
         private IQueryable<Genre> Sort(IQueryable<Genre> genres,
             SortState sortOrder, string name, int page)
         {
