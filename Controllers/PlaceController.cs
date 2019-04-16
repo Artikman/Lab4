@@ -26,6 +26,7 @@ namespace Lab_4.Controllers
         }
 
         [HttpGet]
+        [LoggingFilter]
         public IActionResult Index(SortState sortOrder)
         {
             Place sessionPlace = (Place)HttpContext.Session.GetObject("Place");
@@ -63,6 +64,7 @@ namespace Lab_4.Controllers
         }
 
         [HttpPost]
+        [LoggingFilter]
         public IActionResult Index(Place place)
         {
             var sessionSortState = HttpContext.Session.GetString("SortStatePlace");
@@ -91,6 +93,7 @@ namespace Lab_4.Controllers
             return View(PlacesView);
         }
 
+        [SaveStateFilter("sort")]
         private IQueryable<Place> Sort(IQueryable<Place> Places,
             SortState sortOrder, string session, int placeNumber, int page)
         {
